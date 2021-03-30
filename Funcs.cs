@@ -46,7 +46,8 @@ namespace WpfApp1
 
 			for (int i = 0; i < array.Length; i++)
 			{
-				array[i] = Int32.Parse(splitedArray[i]);
+				var ok = Int32.TryParse(splitedArray[i], out array[i]);
+				if (!ok) return null;
 				if (array[i] < 1000 || array[i] > 9999) return null;
 			}
 			return array;
